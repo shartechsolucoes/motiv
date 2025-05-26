@@ -1,36 +1,46 @@
 import { ICar } from 'types/types';
-import car1 from 'assets/car-1.webp';
-import car2 from 'assets/car-2.webp';
-import car3 from 'assets/car-3.webp';
+import car1 from 'assets/car-8.webp';
+import car2 from 'assets/car-7.webp';
+import car3 from 'assets/car-6.webp';
+import car4 from 'assets/car-5.webp';
 
-const carImages: Record<number, string> = { 1: car1, 2: car2, 3: car3 };
+const carImages: Record<number, string> = { 1: car1, 2: car2, 3: car3, 4: car4 };
 
 export const cars: ICar[] = [
   {
     id: 1,
     imageUrl: carImages[1],
-    recommendation: 64,
-    modelName: 'Mini Cooper',
+    type: 'Sedan',
+    modelName: 'Voyage',
     mileage: 132,
-    costPerHour: 32,
+    costPerHour: 1,
     backgroundColor: 'warning.lighter',
   },
   {
     id: 2,
-    recommendation: 74,
+    type: 'Hatch',
     imageUrl: carImages[2],
-    modelName: 'Ford K',
+    modelName: 'Polo',
     mileage: 130,
-    costPerHour: 28,
+    costPerHour: 1,
     backgroundColor: 'primary.lighter',
   },
   {
     id: 3,
-    recommendation: 74,
+    type: 'Picapes',
     imageUrl: carImages[3],
-    modelName: 'Porsche 911 Carrera',
+    modelName: 'Hilux',
     mileage: 130,
-    costPerHour: 28,
+    costPerHour: 3,
     backgroundColor: 'error.lighter',
+  },
+  {
+    id: 4,
+    type: `Suv`,
+    imageUrl: carImages[4],
+    modelName: 'Duster',
+    mileage: 800,
+    costPerHour: 2,
+    backgroundColor: 'error.',
   },
 ];

@@ -14,13 +14,14 @@ echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 interface ChartProps {
   barChartRef: MutableRefObject<EChartsReactCore | null>;
   data: number[] | null;
+  xAxisLabels: string[];
   style?: {
     height?: number;
     width?: number;
   };
 }
 
-const MilesStatisticsChart = ({ barChartRef, data, style }: ChartProps) => {
+const MilesStatisticsChart = ({ barChartRef, data, xAxisLabels, style }: ChartProps) => {
   const theme = useTheme();
 
   const getBarChartOption = useMemo(() => {
@@ -37,20 +38,14 @@ const MilesStatisticsChart = ({ barChartRef, data, style }: ChartProps) => {
           color: theme.palette.common.white,
           fontSize: theme.typography.fontSize / 1.4,
         },
-
         formatter: TooltipFormatter,
         padding: [2, 9, 2, 8],
-        // position: function (pos: Array<number>) {
-        //   return [pos[0], '30%'];
-        // },
         extraCssText: 'border-radius: 0.3125rem;',
       },
 
       grid: {
         left: '0',
         right: '1',
-        // left: '-4%',
-        // right: '-4%',
         top: '0',
         bottom: '12%',
       },
@@ -63,7 +58,7 @@ const MilesStatisticsChart = ({ barChartRef, data, style }: ChartProps) => {
       xAxis: [
         {
           type: 'category',
-          data: ['1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM'],
+          data: xAxisLabels,
           axisTick: {
             show: false,
           },
@@ -96,8 +91,7 @@ const MilesStatisticsChart = ({ barChartRef, data, style }: ChartProps) => {
         {
           type: 'bar',
           barWidth: 28,
-          data: [120, 80, 157, 60, 130, 40, 90],
-          // data: data,
+          data: data ?? [],
           cursor: 'none',
           emphasis: {
             focus: 'series',
@@ -110,7 +104,7 @@ const MilesStatisticsChart = ({ barChartRef, data, style }: ChartProps) => {
     };
 
     return barChartOption;
-  }, [data]);
+  }, [data, xAxisLabels, theme]);
 
   return (
     <ReactEchart echarts={echarts} option={getBarChartOption} ref={barChartRef} style={style} />

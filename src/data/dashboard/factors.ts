@@ -10,7 +10,7 @@ export const factors: IFactor[] = [
     icon: Lightning,
     title: 'Consumo',
     color: 'primary.main',
-    value: 45,
+    value: 12.5,
   },
   {
     id: 2,

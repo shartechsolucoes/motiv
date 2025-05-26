@@ -9,7 +9,7 @@ export const cars: ICar[] = [
   {
     id: 1,
     imageUrl: carImages[1],
-    recommendation: 64,
+    type: '',
     modelName: 'Mini Cooper',
     mileage: 132,
     costPerHour: 32,
@@ -17,7 +17,7 @@ export const cars: ICar[] = [
   },
   {
     id: 2,
-    recommendation: 74,
+    type: '',
     imageUrl: carImages[2],
     modelName: 'Ford K',
     mileage: 130,
@@ -26,9 +26,9 @@ export const cars: ICar[] = [
   },
   {
     id: 3,
-    recommendation: 74,
+    type: '',
     imageUrl: carImages[3],
-    modelName: 'Porsche 911 Carrera',
+    modelName: 'Picapes',
     mileage: 130,
     costPerHour: 28,
     backgroundColor: 'error.lighter',

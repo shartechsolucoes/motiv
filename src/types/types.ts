@@ -44,7 +44,7 @@ export interface IFactor {
 
 export interface ICar {
   id: number;
-  recommendation: number;
+  type: string;
   imageUrl: string;
   modelName: string;
   mileage: number;

@@ -9,7 +9,7 @@ export const cars: ICar[] = [
   {
     id: 1,
     imageUrl: carImages[1],
-    recommendation: 64,
+    type: '',
     modelName: 'Mini Cooper',
     mileage: 132,
     costPerHour: 32,

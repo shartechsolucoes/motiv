@@ -9,13 +9,12 @@ type ChartDataKey = keyof typeof areaChart;
 
 const CarStatistics = () => {
   const areaChartRef = useRef<null | EChartsReactCore>(null);
-  const [selectedOption, setSelectedOption] = useState('day');
+  const [selectedOption, setSelectedOption] = useState<ChartDataKey>('day');
+  const [currentDate] = useState(new Date());
 
-  let areaChartData: number[] | null = null;
   const handleChartLegend = (value: ChartDataKey) => {
     setSelectedOption(value);
-    areaChartData = areaChart[value];
-
+    const areaChartData = areaChart[value];
     if (areaChartRef.current) {
       const chartInstance = areaChartRef.current.getEchartsInstance();
       chartInstance.setOption({
@@ -28,6 +27,27 @@ const CarStatistics = () => {
     }
   };
 
+  const generateXAxisLabels = (option: ChartDataKey) => {
+    if (option === 'day') {
+      return ['05', '07', '09', '11', '13', '15', '17', '19', '21', '23'];
+    }
+    if (option === 'week') {
+      return ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+    }
+    if (option === 'month') {
+      return ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    }
+    return [];
+  };
+
+  const formattedDate = currentDate.toLocaleDateString('pt-BR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
+  const areaChartData = areaChart[selectedOption];
+
   return (
     <Paper
       sx={(theme) => ({
@@ -36,12 +56,11 @@ const CarStatistics = () => {
     >
       <Stack rowGap={3} sx={{ mb: 1.75 }}>
         <Typography variant="h3">
-          Car{' '}
+          Estatisticas do{' '}
           <Box component="span" sx={{ fontWeight: 'fontWeightRegular' }}>
-            Statistics
+            Veiculos
           </Box>
         </Typography>
-
         <Stack
           sx={{
             flexDirection: { sm: 'row' },
@@ -51,9 +70,8 @@ const CarStatistics = () => {
           }}
         >
           <Typography variant="subtitle2" component="p" sx={{ color: 'grey.700' }}>
-            20 February 2022
+            {formattedDate}
           </Typography>
-
           <Stack
             direction="row"
             columnGap={1.25}
@@ -64,29 +82,29 @@ const CarStatistics = () => {
           >
             <ChartLegend
               active={selectedOption === 'day'}
-              label="Day"
+              label="Dia"
               color="warning"
-              onHandleClick={handleChartLegend}
+              onHandleClick={() => handleChartLegend('day')}
             />
             <ChartLegend
               active={selectedOption === 'week'}
-              label="Week"
+              label="Semana"
               color="warning"
-              onHandleClick={handleChartLegend}
+              onHandleClick={() => handleChartLegend('week')}
             />
             <ChartLegend
               active={selectedOption === 'month'}
-              label="Month"
+              label="Ano"
               color="warning"
-              onHandleClick={handleChartLegend}
+              onHandleClick={() => handleChartLegend('month')}
             />
           </Stack>
         </Stack>
       </Stack>
-
       <CarStatisticsChart
         areaChartRef={areaChartRef}
         data={areaChartData}
+        xAxisLabels={generateXAxisLabels(selectedOption)}
         style={{ height: 223 }}
       />
     </Paper>

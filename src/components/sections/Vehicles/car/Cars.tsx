@@ -7,7 +7,7 @@ import ThunderIcon from 'components/icons/car/Icon4';
 import { ICar } from 'types/types';
 
 const Car = ({ car }: { car: ICar; cars?: ICar[] }) => {
-  const { imageUrl, recommendation, modelName, mileage, costPerHour, backgroundColor } = car;
+  const { imageUrl, type, modelName, mileage, costPerHour, backgroundColor } = car;
   return (
     <Grid container spacing={3.75}>
       <Grid item key={car.id} xs={12} sm={6} lg>
@@ -25,7 +25,7 @@ const Car = ({ car }: { car: ICar; cars?: ICar[] }) => {
               <IconButton aria-label="circulation-icon" sx={{ p: 0.5 }}>
                 <CirculationIcon sx={{ color: 'grey.600' }} />
               </IconButton>
-              <Typography variant="body1">{recommendation}% Vida Oleo</Typography>
+              <Typography variant="body1">{type}</Typography>
             </Stack>
 
             <Image

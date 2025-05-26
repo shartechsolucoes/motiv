@@ -52,7 +52,7 @@ export const columns: GridColDef<(typeof rows)[number]>[] = [
 export const rows: IReminderData[] = [
   {
     id: 1,
-    name: 'Uno Vivace',
+    name: 'Polo',
     placa: 'OLT-2I00',
     due: '06/04/2022',
     overdue: '08/04/2022',
@@ -70,7 +70,7 @@ export const rows: IReminderData[] = [
   },
   {
     id: 3,
-    name: 'Onix',
+    name: 'Hilunx',
     placa: 'BAA-2320',
     due: '01/05/2025',
     overdue: '08/04/2024',
@@ -79,7 +79,7 @@ export const rows: IReminderData[] = [
   },
   {
     id: 4,
-    name: 'Honda HRV',
+    name: 'Duster',
     placa: 'CBA-2I20',
     due: '10/03/2025',
     overdue: '09/05/2024',
@@ -88,7 +88,7 @@ export const rows: IReminderData[] = [
   },
   {
     id: 5,
-    name: 'Uno Vivace',
+    name: 'Polo',
     placa: 'OLT-2I00',
     due: '06/04/2022',
     overdue: '08/04/2022',
@@ -106,7 +106,7 @@ export const rows: IReminderData[] = [
   },
   {
     id: 7,
-    name: 'Onix',
+    name: 'Hilunx',
     placa: 'BAA-2320',
     due: '01/05/2025',
     overdue: '08/04/2024',
@@ -115,7 +115,7 @@ export const rows: IReminderData[] = [
   },
   {
     id: 8,
-    name: 'Honda HRV',
+    name: 'Duster',
     placa: 'CBA-2I20',
     due: '10/03/2025',
     overdue: '09/05/2024',

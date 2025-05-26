@@ -16,13 +16,14 @@ echarts.use([TooltipComponent, GridComponent, LineChart, CanvasRenderer, Univers
 interface ChartProps {
   areaChartRef: MutableRefObject<EChartsReactCore | null>;
   data: number[] | null;
+  xAxisLabels: string[];
   style?: {
     height?: number;
     width?: number;
   };
 }
 
-const CarStatisticsChart = ({ areaChartRef, data, style }: ChartProps) => {
+const CarStatisticsChart = ({ areaChartRef, data, xAxisLabels, style }: ChartProps) => {
   const theme = useTheme();
 
   const chartOption = useMemo(() => {
@@ -54,7 +55,7 @@ const CarStatisticsChart = ({ areaChartRef, data, style }: ChartProps) => {
 
       xAxis: {
         type: 'category',
-        data: ['5 am', '7 am', '9 am', '11 am', '1 pm', '3 pm', '5 pm', '7 pm', '9 pm', '11 pm'],
+        data: xAxisLabels, // 🔥 Aqui agora usa os labels dinâmicos
         axisTick: {
           show: true,
           inside: true,
@@ -95,14 +96,14 @@ const CarStatisticsChart = ({ areaChartRef, data, style }: ChartProps) => {
       },
 
       grid: {
-        left: '-6%',
+        left: '-2%',
         right: '-5%',
-        top: '0',
+        top: '10',
         bottom: '12%',
       },
       series: [
         {
-          data: [500, 620, 932, 801, 934, 1290, 1130, 1020, 1300, 1200],
+          data: data || [],
           type: 'line',
           smooth: true,
           symbol: 'none',
@@ -123,7 +124,7 @@ const CarStatisticsChart = ({ areaChartRef, data, style }: ChartProps) => {
       ],
     };
     return areaChartOption;
-  }, [data, theme]);
+  }, [data, xAxisLabels, theme]);
 
   return <ReactEchart echarts={echarts} option={chartOption} ref={areaChartRef} style={style} />;
 };

@@ -7,7 +7,7 @@ import ThunderIcon from 'components/icons/car/Icon4';
 
 const Car = () => {
   const imageUrl = 'http://localhost:3000/motiv/src/assets/car-1.webp';
-  const recommendation = '10';
+  const type = '10';
   const modelName = 'Kia cerato';
   const mileage = '23';
   const costPerHour = '213';
@@ -27,7 +27,7 @@ const Car = () => {
           <IconButton aria-label="circulation-icon" sx={{ p: 0.5 }}>
             <CirculationIcon sx={{ color: 'grey.600' }} />
           </IconButton>
-          <Typography variant="body1">{recommendation}% Vida Oleo</Typography>
+          <Typography variant="body1">{type}% Vida Oleo</Typography>
         </Stack>
 
         <Image
