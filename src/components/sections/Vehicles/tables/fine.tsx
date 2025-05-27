@@ -46,7 +46,7 @@ const tableFuel = () => {
         spacing={2}
       >
         <Typography variant="h5" color="common.black">
-          Abastecimento
+          Multas
         </Typography>
 
         <SearchFilter apiRef={apiRef} />
