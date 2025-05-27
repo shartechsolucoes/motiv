@@ -25,7 +25,7 @@ export const columns: GridColDef<(typeof rows)[number]>[] = [
   },
   {
     field: 'conductor',
-    headerName: 'Condutot',
+    headerName: 'Condutor',
     flex: 1,
     minWidth: 200,
     sortable: false,
