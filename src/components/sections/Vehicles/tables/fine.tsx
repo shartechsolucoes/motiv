@@ -1,10 +1,11 @@
 import { Box, Button, Modal, Paper, Stack, Typography } from '@mui/material';
-import { DataGrid, useGridApiRef } from '@mui/x-data-grid';
+import { DataGrid, GridRowParams, useGridApiRef } from '@mui/x-data-grid';
 import SearchFilter from 'components/common/SearchFilter';
 import CustomPagination from 'components/common/CustomPagination';
 import { columns, rows } from 'data/vehicles/tables/fine';
 import React from 'react';
 import VehicleFine from 'components/sections/Vehicles/Info/fine.tsx';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -23,6 +24,12 @@ const tableFuel = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
+
+  const handleRowClick = (params: GridRowParams) => {
+    // Exemplo de navegação com ID
+    navigate(`/vehicles/fine/${params.id}`);
+  };
 
   return (
     <Paper
@@ -76,6 +83,13 @@ const tableFuel = () => {
               paginationModel: {
                 pageSize: 5,
               },
+            },
+          }}
+          onRowClick={handleRowClick}
+          sx={{
+            cursor: 'pointer',
+            '& .MuiDataGrip-row:hover': {
+              backgroundColor: '#f5f5f5',
             },
           }}
         />
